@@ -5,14 +5,17 @@
     "tasks": [
         {
             "type": "shell",
-            "label": "run cmake",
-            "command": "cmake",
-            "args": ["-DCMAKE_BUILD_TYPE=DEBUG"],
+            "label": "build",
+            "command": "make",
+            "args": [],
             "options": {
-                "cwd": "${workspaceRoot}"
+                "cwd": "${workspaceRoot}/build"
             },
             "problemMatcher": ["$gcc"],
-            "group": "build"
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }
