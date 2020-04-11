@@ -30,3 +30,14 @@
 *.exe
 *.out
 *.app
+
+build/CMakeCache.txt
+build/CMakeFiles/*
+build/CPackConfig.cmake
+build/CPackSourceConfig.cmake
+build/CTestTestfile.cmake
+build/DartConfiguration.tcl
+build/Makefile
+build/cmake_install.cmake
+build/motion-planning
+
