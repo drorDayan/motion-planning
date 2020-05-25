@@ -2,10 +2,12 @@
 #include <ompl/base/spaces/SE3StateSpace.h>
 #include <ompl/geometric/planners/rrt/RRTConnect.h>
 #include <ompl/geometric/planners/rrt/RRT.h>
+#include <ompl/geometric/planners/prm/PRM.h>
 #include <ompl/geometric/SimpleSetup.h>
 
 #include <ompl/config.h>
 #include <iostream>
+#include "sparse_prm.h"
 
 namespace ob = ompl::base;
 namespace og = ompl::geometric;
@@ -61,7 +63,7 @@ void plan()
     pdef->setStartAndGoalStates(start, goal);
 
     // create a planner for the defined space
-    auto planner(std::make_shared<og::RRT>(si));
+    auto planner(std::make_shared<Sparse_PRM>(si));
 
     // set the problem we are trying to solve for the planner
     planner->setProblemDefinition(pdef);
@@ -76,8 +78,8 @@ void plan()
     // print the problem settings
     pdef->print(std::cout);
 
-    // attempt to solve the problem within one second of planning time
-    ob::PlannerStatus solved = planner->ob::Planner::solve(1.0);
+    // attempt to solve the problem within 10000 seconds of planning time
+    ob::PlannerStatus solved = planner->ob::Planner::solve(10000.0);
 
     if (solved)
     {
